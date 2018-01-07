@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import DashboardModal from 'uppy/lib/react/DashboardModal';
 
 class MusicUploadButton extends React.Component {
