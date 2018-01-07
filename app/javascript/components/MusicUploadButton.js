@@ -25,18 +25,26 @@ class MusicUploadButton extends React.Component {
   }
 
   getUppyInstance() {
-    return this.props.getUppyInstance({id: 'musicUpload'});
+    const options = {
+      id: 'musicUpload',
+      restrictions: {
+        maxFileSize: 8000000,
+        allowedFileTypes: ['audio/*']
+      }
+    }
+    return this.props.getUppyInstance(options);
   }
 
   render() {
     return (
       <section className="music-upload">
-        <button onClick={this.handleOpen}>Upload some music</button>
+        <button onClick={this.handleOpen}>Upload your best songs</button>
         <DashboardModal
           uppy={this.getUppyInstance()}
           closeModalOnClickOutside
           open={this.state.modalOpen}
           onRequestClose={this.handleClose}
+          note="Audio files only, up to 8MB"
         />
       </section>
     );
