@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ExampleSelector extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       options: [
         "Drag and Drop", "Dashboard"
@@ -16,7 +16,8 @@ class ExampleSelector extends React.Component {
       return (
         <li
           key={`menu-option-${index}`}
-          onClick={this.props.changeActiveExample.bind(null, index)}>
+          onClick={this.props.changeActiveExample.bind(null, index)}
+          className={this.props.currentExample === index ? 'active':'' }>
           {option}
         </li>
       );
@@ -36,7 +37,8 @@ class ExampleSelector extends React.Component {
 }
 
 ExampleSelector.propTypes = {
-  changeActiveExample: PropTypes.func
+  changeActiveExample: PropTypes.func,
+  currentExample: PropTypes.number
 };
 
 export default ExampleSelector;

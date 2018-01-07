@@ -46,7 +46,9 @@ class UppyApp extends React.Component {
   render () {
     return (
       <section className="uppy-app">
-        <ExampleSelector changeActiveExample={this.changeActiveExample} />
+        <ExampleSelector
+          changeActiveExample={this.changeActiveExample}
+          currentExample={this.state.activeExample} />
         {this.renderActiveExample()}
       </section>
     );
