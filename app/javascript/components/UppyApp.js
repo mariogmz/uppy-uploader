@@ -9,7 +9,7 @@ class UppyApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeExample: 0
+      activeExample: 1
     };
     this.changeActiveExample = this.changeActiveExample.bind(this);
   }
@@ -32,24 +32,18 @@ class UppyApp extends React.Component {
     return uppy;
   }
 
-  renderActiveExample() {
-    switch (this.state.activeExample) {
-      case 0:
-        return <DragAndDrop getUppyInstance={this.getUppyInstance} />;
-      case 1:
-        return <MusicUploadButton getUppyInstance={this.getUppyInstance} />;
-      default:
-        return <h1>Uppy examples</h1>;
-    }
-  }
-
   render () {
     return (
       <section className="uppy-app">
         <ExampleSelector
           changeActiveExample={this.changeActiveExample}
           currentExample={this.state.activeExample} />
-        {this.renderActiveExample()}
+          <DragAndDrop
+            getUppyInstance={this.getUppyInstance}
+            isActive={this.state.activeExample ===  0} />
+          <MusicUploadButton
+            getUppyInstance={this.getUppyInstance}
+            isActive={this.state.activeExample ===  1} />
       </section>
     );
   }

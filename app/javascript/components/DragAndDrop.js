@@ -8,12 +8,17 @@ class DragAndDrop extends React.Component {
   }
 
   render () {
-    return <DragDrop uppy={this.getUppyInstance()} />;
+    return (
+      <section className={`drag-and-drop example ${this.props.isActive ? 'active':''}`}>
+        <DragDrop uppy={this.getUppyInstance()} />
+      </section>
+    );
   }
 }
 
 DragAndDrop.propTypes = {
-  getUppyInstance: PropTypes.func
+  getUppyInstance: PropTypes.func,
+  isActive: PropTypes.bool
 };
 
 export default DragAndDrop;

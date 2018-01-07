@@ -37,8 +37,12 @@ class MusicUploadButton extends React.Component {
 
   render() {
     return (
-      <section className="music-upload">
-        <button onClick={this.handleOpen}>Upload your best songs</button>
+      <section className={`music-upload example ${this.props.isActive ? 'active':''}`}>
+        <button
+          className="music-upload-button"
+          onClick={this.handleOpen}>
+            Upload your best songs
+        </button>
         <DashboardModal
           uppy={this.getUppyInstance()}
           closeModalOnClickOutside
@@ -52,7 +56,8 @@ class MusicUploadButton extends React.Component {
 }
 
 MusicUploadButton.propTypes = {
-  getUppyInstance: PropTypes.func
+  getUppyInstance: PropTypes.func,
+  isActive: PropTypes.bool
 };
 
 export default MusicUploadButton;

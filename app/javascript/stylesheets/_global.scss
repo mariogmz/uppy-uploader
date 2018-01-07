@@ -2,3 +2,11 @@ html {
   background-color: $aqua-haze-color;
   color: $san-juan-color;
 }
+
+.example {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
