@@ -4,12 +4,7 @@ import DragDrop from 'uppy/lib/react/DragDrop';
 
 class DragAndDrop extends React.Component {
   render () {
-    const uppy = this.props.getUppyInstance();
-    if (uppy !== undefined) {
-      return <DragDrop uppy={this.props.getUppyInstance()} />;
-    } else {
-      return <p>No Uppy instance was available</p>;
-    }
+    return <DragDrop uppy={this.props.getUppyInstance()} />;
   }
 }
 

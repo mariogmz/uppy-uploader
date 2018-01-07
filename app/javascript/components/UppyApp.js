@@ -2,6 +2,7 @@ import React from "react";
 import Uppy from 'uppy/lib/core';
 import Tus from 'uppy/lib/plugins/Tus';
 import DragAndDrop from './DragAndDrop';
+import MusicUploadButton from './MusicUploadButton';
 
 class UppyApp extends React.Component {
 
@@ -20,6 +21,7 @@ class UppyApp extends React.Component {
     return (
       <section className="uppy-app">
         <DragAndDrop getUppyInstance={this.getUppyInstance} />
+        <MusicUploadButton getUppyInstance={this.getUppyInstance} />
       </section>
     );
   }
