@@ -1,6 +1,6 @@
 import React from 'react';
 import Uppy from 'uppy/lib/core';
-import Tus from 'uppy/lib/plugins/Tus';
+import XHRUpload from 'uppy/lib/plugins/XHRUpload';
 import DragAndDrop from './DragAndDrop';
 import MusicUploadButton from './MusicUploadButton';
 import ExampleSelector from './ExampleSelector';
@@ -9,9 +9,11 @@ class UppyApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeExample: 1
+      activeExample: 1,
+      message: ''
     };
     this.changeActiveExample = this.changeActiveExample.bind(this);
+    this.getUppyInstance = this.getUppyInstance.bind(this);
   }
 
   changeActiveExample(nextExample) {
@@ -26,10 +28,30 @@ class UppyApp extends React.Component {
       autoProceed: true
     };
     const uppy = Uppy(defaultOptions);
-    uppy.use(Tus, { endpoint: '/upload' });
+    const self = this;
+    uppy.use(XHRUpload, {
+      endpoint: '/upload',
+      getResponseData: (xhr) => {
+        const response = JSON.parse(xhr.response);
+        self.setState({message: response.message});
+        return { url: xhr.responseURL };
+      },
+      getResponseError: (xhr) => {
+        const response = JSON.parse(xhr.response);
+        self.setState({message: response.message});
+      }
+    });
     uppy.on('complete', result => console.log(result));
     uppy.run();
     return uppy;
+  }
+
+  showMessage() {
+    if(this.state.message !== undefined && this.state.message.length > 0) {
+      return <p>
+        {this.state.message}
+      </p>
+    }
   }
 
   render () {
@@ -44,6 +66,7 @@ class UppyApp extends React.Component {
           <MusicUploadButton
             getUppyInstance={this.getUppyInstance}
             isActive={this.state.activeExample ===  1} />
+          {this.showMessage()}
       </section>
     );
   }
