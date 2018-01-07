@@ -3,6 +3,7 @@ import Uppy from 'uppy/lib/core';
 import Tus from 'uppy/lib/plugins/Tus';
 import DragAndDrop from './DragAndDrop';
 import MusicUploadButton from './MusicUploadButton';
+import ExampleSelector from './ExampleSelector';
 
 class UppyApp extends React.Component {
   constructor() {
@@ -14,7 +15,9 @@ class UppyApp extends React.Component {
   }
 
   changeActiveExample(nextExample) {
-    this.setState({ activeExample: nextExample });
+    if(nextExample !== this.state.activeExample) {
+      this.setState({ activeExample: nextExample });
+    }
   }
 
   getUppyInstance(options) {
@@ -43,6 +46,7 @@ class UppyApp extends React.Component {
   render () {
     return (
       <section className="uppy-app">
+        <ExampleSelector changeActiveExample={this.changeActiveExample} />
         {this.renderActiveExample()}
       </section>
     );
