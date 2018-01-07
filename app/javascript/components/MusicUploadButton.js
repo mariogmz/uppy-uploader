@@ -24,12 +24,16 @@ class MusicUploadButton extends React.Component {
     })
   }
 
+  getUppyInstance() {
+    return this.props.getUppyInstance({id: 'musicUpload'});
+  }
+
   render() {
     return (
       <section className="music-upload">
         <button onClick={this.handleOpen}>Upload some music</button>
         <DashboardModal
-          uppy={this.props.getUppyInstance()}
+          uppy={this.getUppyInstance()}
           closeModalOnClickOutside
           open={this.state.modalOpen}
           onRequestClose={this.handleClose}
