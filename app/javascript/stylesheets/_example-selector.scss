@@ -1,0 +1,33 @@
+.example-selector {
+  width: 100%;
+
+  ul {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      align-items: center;
+      background-color: $morning-glory-color;
+      cursor: pointer;
+      display: flex;
+      flex-grow: 1;
+      height: 50px;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.5s ease-in-out;
+
+      &:hover,
+      &.active {
+        background-color: $pelorous-color;
+        color: $aqua-haze-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.music-upload {
+  background-color: $san-juan-color;
+  min-height: 500px;
+  position: relative;
+
+  &-button {
+    background-color: $ice-cold-color;
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    transform: translateX(-50%);
+  }
+}
